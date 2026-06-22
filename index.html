@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Father's Day, Dad</title>
+<style>
+  :root {
+    --bg:        #1a1410;
+    --bg-2:      #20180f;
+    --card:      #271e16;
+    --card-2:    #2f241a;
+    --line:      #3d2f22;
+    --cream:     #f6ece0;
+    --muted:     #c0ad97;
+    --ember:     #ff9f1c;
+    --terracotta:#e07a5f;
+    --green:     #9bbf85;
+    --shadow:    0 18px 40px rgba(0,0,0,.45);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--cream);
+    background:
+      radial-gradient(1100px 600px at 50% -10%, #3a2a18 0%, rgba(58,42,24,0) 60%),
+      radial-gradient(800px 500px at 100% 100%, #2a1d12 0%, rgba(42,29,18,0) 55%),
+      var(--bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- entrance animation ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    text-align: center;
+    padding: 92px 22px 54px;
+    position: relative;
+  }
+
+  .cup {
+    width: 78px; height: 64px; margin: 0 auto 26px; position: relative;
+    filter: drop-shadow(0 10px 14px rgba(0,0,0,.35));
+  }
+  .cup .mug {
+    position:absolute; bottom:0; left:8px; width:54px; height:42px;
+    background: linear-gradient(180deg,#f6ece0,#e7d8c6);
+    border-radius: 6px 6px 16px 16px;
+  }
+  .cup .handle {
+    position:absolute; right:2px; bottom:8px; width:20px; height:24px;
+    border:6px solid #e7d8c6; border-left:none; border-radius:0 14px 14px 0;
+  }
+  .cup .steam {
+    position:absolute; top:-20px; width:6px; height:24px; border-radius:6px;
+    background: linear-gradient(180deg, rgba(246,236,224,.0), rgba(246,236,224,.75));
+    animation: steam 3s ease-in-out infinite;
+  }
+  .cup .steam.s1 { left:24px; animation-delay:0s; }
+  .cup .steam.s2 { left:38px; animation-delay:.7s; }
+  .cup .steam.s3 { left:52px; animation-delay:1.4s; }
+  @keyframes steam {
+    0%   { opacity:0; transform: translateY(6px) scaleY(.7); }
+    40%  { opacity:.8; }
+    100% { opacity:0; transform: translateY(-18px) scaleY(1.25); }
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: .28em;
+    font-size: 12px;
+    color: var(--ember);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(38px, 8vw, 64px);
+    line-height: 1.05;
+    margin: 0 0 18px;
+    letter-spacing: -0.5px;
+  }
+  h1 .glow { color: var(--ember); text-shadow: 0 0 28px rgba(255,159,28,.45); }
+  .subtitle { font-size: clamp(16px, 3.4vw, 20px); color: var(--muted); max-width: 30ch; margin: 0 auto 30px; }
+
+  .btn {
+    appearance:none; cursor:pointer;
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    color: #2a1c0e; background: linear-gradient(180deg,#ffbf69,#ff9f1c);
+    border: none; border-radius: 999px; padding: 13px 26px;
+    box-shadow: 0 10px 24px rgba(255,159,28,.32);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(255,159,28,.42); }
+  .btn:active { transform: translateY(0); }
+  .btn.ghost {
+    background: transparent; color: var(--cream);
+    border: 1px solid var(--line); box-shadow: none;
+  }
+  .btn.ghost:hover { border-color: var(--ember); color: var(--ember); }
+
+  /* ---------- section scaffolding ---------- */
+  section { padding: 38px 0; }
+  .kicker {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--terracotta); margin: 0 0 6px;
+  }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(24px,5vw,32px); margin: 0 0 22px; }
+
+  /* ---------- system status panel (tech gag) ---------- */
+  .panel {
+    background: linear-gradient(180deg, var(--card-2), var(--card));
+    border: 1px solid var(--line); border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .panel .bar {
+    display:flex; align-items:center; gap:8px;
+    padding: 11px 16px; background: #15100b; border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+  .dot { width:11px; height:11px; border-radius:50%; }
+  .dot.r{background:#e0685f}.dot.y{background:#ffbf69}.dot.g{background:#9bbf85}
+  .panel .body { padding: 18px 16px 6px; font-family: var(--mono); font-size: 14px; }
+  .stat { margin-bottom: 16px; }
+  .stat .row { display:flex; justify-content:space-between; margin-bottom:7px; }
+  .stat .label { color: var(--cream); }
+  .stat .val { color: var(--ember); }
+  .track { height: 9px; background:#171009; border-radius:999px; overflow:hidden; }
+  .fill { height:100%; width:0; border-radius:999px;
+          background: linear-gradient(90deg,#e07a5f,#ff9f1c);
+          transition: width 1.5s cubic-bezier(.2,.7,.2,1); }
+  .stat.ok .val { color: var(--green); }
+  .stat.ok .fill { background: linear-gradient(90deg,#6f8f5c,#9bbf85); }
+
+  /* ---------- reasons (flip cards) ---------- */
+  .grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  @media (max-width:560px){ .grid { grid-template-columns: 1fr; } }
+  .flip { perspective: 1000px; height: 150px; cursor: pointer; }
+  .flip-inner { position:relative; width:100%; height:100%;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; }
+  .flip.flipped .flip-inner { transform: rotateY(180deg); }
+  .face { position:absolute; inset:0; backface-visibility:hidden;
+    border-radius:14px; border:1px solid var(--line); padding:18px;
+    display:flex; align-items:center; justify-content:center; text-align:center; }
+  .face.front {
+    background: linear-gradient(160deg, var(--card-2), var(--card));
+    flex-direction:column; gap:8px; box-shadow: var(--shadow);
+  }
+  .face.front .heart { font-size: 26px; }
+  .face.front .hint { font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); }
+  .face.front .num { font-family: var(--serif); font-size: 22px; color: var(--ember); }
+  .face.back {
+    background: linear-gradient(160deg, #32261b, #2a2017);
+    transform: rotateY(180deg); color: var(--cream); font-size: 15px; line-height:1.45;
+    box-shadow: var(--shadow);
+  }
+
+  /* ---------- jokes ---------- */
+  .joke-box {
+    background: linear-gradient(180deg, var(--card-2), var(--card));
+    border:1px solid var(--line); border-radius:16px; padding: 26px 22px;
+    text-align:center; box-shadow: var(--shadow);
+  }
+  .joke-text { font-family: var(--serif); font-size: clamp(18px,4vw,22px); min-height: 84px;
+    display:flex; align-items:center; justify-content:center; transition: opacity .25s ease; }
+  .joke-actions { margin-top: 16px; }
+
+  /* ---------- letter ---------- */
+  .letter {
+    background:
+      repeating-linear-gradient(180deg, transparent, transparent 31px, rgba(61,47,34,.5) 32px),
+      linear-gradient(180deg, #2b2118, #251c14);
+    border:1px solid var(--line); border-radius:16px;
+    padding: 32px 26px; box-shadow: var(--shadow);
+    font-size: 17px; white-space: pre-wrap; line-height: 1.9;
+  }
+  .letter .sign { font-family: var(--serif); font-size: 22px; color: var(--ember); margin-top: 10px; }
+  .photo {
+    width: 100%; max-width: 320px; margin: 0 auto 22px; display:block;
+    border-radius: 14px; border: 6px solid #f6ece0;
+    transform: rotate(-2deg); box-shadow: var(--shadow);
+  }
+
+  /* ---------- certificate (warranty gag) ---------- */
+  .cert {
+    border: 2px solid var(--ember); border-radius: 16px; padding: 28px 24px;
+    text-align:center; background:
+      radial-gradient(600px 200px at 50% 0%, rgba(255,159,28,.10), transparent 70%), var(--bg-2);
+    box-shadow: var(--shadow); position: relative;
+  }
+  .cert .seal {
+    position:absolute; top:-22px; left:50%; transform:translateX(-50%);
+    width:48px; height:48px; border-radius:50%;
+    background: linear-gradient(180deg,#ffbf69,#ff9f1c); color:#2a1c0e;
+    display:flex; align-items:center; justify-content:center; font-size:24px;
+    box-shadow: 0 8px 18px rgba(255,159,28,.4);
+  }
+  .cert h3 { font-family:var(--serif); font-size: clamp(22px,5vw,30px); margin:14px 0 4px; }
+  .cert .lines { font-family:var(--mono); font-size:13px; color:var(--muted); line-height:2; margin-top:14px; }
+  .cert .lines b { color: var(--cream); }
+
+  footer { text-align:center; padding: 46px 22px 70px; color: var(--muted); font-size: 14px; }
+  footer .ps { font-family: var(--serif); font-style: italic; color: var(--cream); margin-top: 10px; }
+
+  /* confetti overlay */
+  #confetti { position: fixed; inset: 0; pointer-events: none; z-index: 50; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; opacity:1; transform:none; }
+    .cup .steam { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<header class="hero">
+  <div class="cup" aria-hidden="true">
+    <span class="steam s1"></span><span class="steam s2"></span><span class="steam s3"></span>
+    <span class="mug"></span><span class="handle"></span>
+  </div>
+  <p class="eyebrow">Father&rsquo;s Day &middot; Limited Edition</p>
+  <h1>Happy Father&rsquo;s Day,<br><span class="glow" id="heroDad">Dad</span></h1>
+  <p class="subtitle" id="heroSub"></p>
+  <button class="btn" id="confettiBtn">Tap for confetti &#127881;</button>
+</header>
+
+<main>
+
+  <section class="wrap reveal">
+    <p class="kicker">// system status</p>
+    <h2>Dad &mdash; Diagnostic Report</h2>
+    <div class="panel" id="panel">
+      <div class="bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span style="margin-left:8px">dad@home &mdash; all systems nominal</span>
+      </div>
+      <div class="body" id="statBody"><!-- stats injected --></div>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <p class="kicker">// the receipts</p>
+    <h2>Reasons you&rsquo;re the best (tap to open)</h2>
+    <div class="grid" id="reasons"><!-- cards injected --></div>
+  </section>
+
+  <section class="wrap reveal">
+    <p class="kicker">// warning: groan incoming</p>
+    <h2>Certified Dad Joke Dispenser</h2>
+    <div class="joke-box">
+      <div class="joke-text" id="jokeText">Loading premium dad humor&hellip;</div>
+      <div class="joke-actions">
+        <button class="btn ghost" id="jokeBtn">Hit me with another &#128293;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <p class="kicker">// the real message</p>
+    <h2>A note for you</h2>
+    <img class="photo" id="photo" alt="" style="display:none" />
+    <div class="letter"><span id="letterText"></span><div class="sign" id="sign"></div></div>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="cert">
+      <div class="seal">&#9733;</div>
+      <h3 id="certName">World&rsquo;s Best Dad</h3>
+      <p style="color:var(--muted);margin:0">Certificate of Lifetime Excellence</p>
+      <div class="lines">
+        Warranty: <b>Lifetime</b> &middot; Support: <b>24/7</b><br>
+        Grill mastery: <b>Certified</b> &middot; Coffee: <b>Always on</b><br>
+        Returns: <b>Not accepted &mdash; we&rsquo;re keeping you</b>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="reveal">
+  <div id="footerCredit">Made with &#10084;&#65039;</div>
+  <div class="ps" id="ps"></div>
+</footer>
+
+<script>
+/* ============================================================
+   ✏️  EDIT THIS BLOCK — this is all you need to make it personal.
+   Everything below it just reads from here. Save, then refresh.
+   ============================================================ */
+const CONFIG = {
+  dadName:   "Papa",         // what you call him (also fills the hero + certificate)
+  yourName:  "",             // your name for the signature — leave "" to sign just "Me"
+  photoUrl:  "",             // OPTIONAL: put a photo named e.g. "dad.jpg" in this folder, then write "dad.jpg"
+
+  heroSubtitle: "To the original full-stack engineer — grill stack and tech stack.",
+
+  // Your real message. Use blank lines for paragraph breaks. Make it yours.
+  letter:
+`Papa,
+
+Thanks. For all of it.
+
+Happy Father's Day.`,
+
+  // Flip-card reasons — add or remove freely.
+  reasons: [
+    "You can fix nearly anything with patience, the right tool, and a YouTube video you'll deny watching.",
+    "Every problem gets smaller after one of your coffees and a straight answer.",
+    "You're never asleep on the couch — you're 'just resting your eyes.' Sure, Papa.",
+    "The grill is yours and yours alone. Honestly? Rightfully so.",
+    "A coffee and a chat with you still beats a fancy night out, every time.",
+    "You make the boring stuff — taxes, tires, Wi-Fi — feel handle-able."
+  ],
+
+  // Dad jokes — grill / coffee / tech flavored. Add your own!
+  jokes: [
+    "I asked Dad how he likes his steak. 'Medium' — same as his confidence in fixing the dishwasher.",
+    "Dad's coffee is like his Wi-Fi advice: strong, a little bitter, and somehow always works.",
+    "I bought Dad a smart speaker. Now he yells at two things that don't listen — it and the TV.",
+    "Why did Dad bring a ladder to the BBQ? He heard the steaks were high.",
+    "Dad doesn't need a manual. He has 'I'll figure it out' and a drawer of random screws.",
+    "What did the USB stick say to Dad? 'You complete me.' He plugged it in upside down. Twice.",
+    "Why don't grills ever get cold? Too many hot takes.",
+    "Dad reboots the router like it owes him money — and honestly, it listens."
+  ],
+
+  ps: "P.S. Yes, you can keep the leftovers. You always do."
+};
+/* ============================================================
+   End of edit block. (You can stop here.)
+   ============================================================ */
+
+/* ---- populate text ---- */
+const dad = CONFIG.dadName || "Dad";
+document.getElementById('heroDad').textContent = dad;
+document.getElementById('heroSub').textContent = CONFIG.heroSubtitle;
+document.getElementById('letterText').textContent = CONFIG.letter;
+document.getElementById('sign').textContent = "— " + (CONFIG.yourName || "Me");
+document.getElementById('certName').textContent = "World's Best " + dad;
+document.getElementById('ps').textContent = CONFIG.ps || "";
+document.title = "Happy Father's Day, " + dad;
+
+if (CONFIG.photoUrl) {
+  const p = document.getElementById('photo');
+  p.src = CONFIG.photoUrl; p.style.display = 'block';
+  p.alt = dad;
+}
+
+/* ---- system status panel ---- */
+const STATS = [
+  { label: "Coffee level",       val: "OPTIMAL",   pct: 96, ok: true },
+  { label: "Grill temperature",  val: "450°F 🔥",  pct: 88 },
+  { label: "Wi-Fi (fixed by Dad)", val: "ONLINE ✓", pct: 100, ok: true },
+  { label: "Dad jokes loaded",   val: "∞",         pct: 100 },
+  { label: "Patience with me",   val: "MAXED",     pct: 99, ok: true }
+];
+const statBody = document.getElementById('statBody');
+STATS.forEach(s => {
+  const el = document.createElement('div');
+  el.className = 'stat' + (s.ok ? ' ok' : '');
+  el.innerHTML =
+    '<div class="row"><span class="label">' + s.label + '</span><span class="val">' + s.val + '</span></div>' +
+    '<div class="track"><div class="fill"></div></div>';
+  statBody.appendChild(el);
+});
+
+/* ---- reasons flip cards ---- */
+const reasonsEl = document.getElementById('reasons');
+CONFIG.reasons.forEach((r, i) => {
+  const card = document.createElement('div');
+  card.className = 'flip';
+  card.innerHTML =
+    '<div class="flip-inner">' +
+      '<div class="face front"><span class="heart">❤</span><span class="num">No. ' + (i+1) + '</span><span class="hint">tap to open</span></div>' +
+      '<div class="face back">' + r + '</div>' +
+    '</div>';
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  reasonsEl.appendChild(card);
+});
+
+/* ---- jokes ---- */
+const jokeText = document.getElementById('jokeText');
+let jokeOrder = CONFIG.jokes.map((_, i) => i);
+let jokePos = 0;
+// light shuffle so it doesn't always start the same
+jokeOrder.sort((a, b) => ((a * 7 + 3) % CONFIG.jokes.length) - ((b * 7 + 3) % CONFIG.jokes.length));
+function nextJoke() {
+  jokeText.style.opacity = 0;
+  setTimeout(() => {
+    jokeText.textContent = CONFIG.jokes[jokeOrder[jokePos % jokeOrder.length]];
+    jokePos++;
+    jokeText.style.opacity = 1;
+  }, 200);
+}
+document.getElementById('jokeBtn').addEventListener('click', nextJoke);
+nextJoke();
+
+/* ---- scroll reveal + animate status bars ---- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    if (e.target.querySelector('#panel')) {
+      const fills = e.target.querySelectorAll('.fill');
+      STATS.forEach((s, i) => { if (fills[i]) fills[i].style.width = s.pct + '%'; });
+    }
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.18 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---- confetti ---- */
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+let W, H, pieces = [], raf = null;
+function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+resize(); addEventListener('resize', resize);
+
+const COLORS = ['#ff9f1c','#ffbf69','#e07a5f','#f6ece0','#cb997e','#9bbf85'];
+const EMOJI = ['☕','🔥','❤️','🎉'];
+function burst(n){
+  for (let i=0;i<n;i++){
+    pieces.push({
+      x: Math.random()*W,
+      y: -20 - Math.random()*H*0.3,
+      vx: (Math.random()-0.5)*3,
+      vy: 2 + Math.random()*3.5,
+      g: 0.05 + Math.random()*0.04,
+      size: 6 + Math.random()*8,
+      rot: Math.random()*Math.PI,
+      vr: (Math.random()-0.5)*0.2,
+      color: COLORS[(i*3)%COLORS.length],
+      emoji: Math.random() < 0.18 ? EMOJI[i % EMOJI.length] : null
+    });
+  }
+  if (!raf) loop();
+}
+function loop(){
+  ctx.clearRect(0,0,W,H);
+  pieces.forEach(p => {
+    p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+    if (p.emoji){ ctx.font = (p.size*2)+'px serif'; ctx.textAlign='center'; ctx.fillText(p.emoji,0,0); }
+    else { ctx.fillStyle = p.color; ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6); }
+    ctx.restore();
+  });
+  pieces = pieces.filter(p => p.y < H + 40);
+  if (pieces.length) raf = requestAnimationFrame(loop);
+  else { ctx.clearRect(0,0,W,H); raf = null; }
+}
+document.getElementById('confettiBtn').addEventListener('click', () => burst(150));
+// a gentle welcome burst on load
+addEventListener('load', () => setTimeout(() => burst(110), 350));
+</script>
+</body>
+</html>
